@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví Điện Tử & Nạp Tiền - CarShop</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.1 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/guest.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <img src="src/img/logo.png" alt="CarShop Logo" class="logo">
+            </a>
+            
+            <!-- Mobile Toggle -->
+            <i class="fa-solid fa-bars icon-dropdown" id="hamburger-menu"></i>
+            
+            <nav id="nav-menu" class="hidden">
+                <a href="index.html">Trang chủ</a>
+                <a href="showroom.html">Showroom</a>
+                <a href="booking.html">Đơn đặt cọc (🚗)</a>
+                
+                <!-- Profile Dropdown -->
+                <div class="dropdown d-inline-block" id="author-menu-drd">
+                    <!-- Render động qua JS -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Space for fixed header -->
+    <div style="height: 80px;"></div>
+
+    <!-- Deposit Main Section -->
+    <section class="py-5 bg-light" style="min-height: calc(100vh - 80px - 400px);">
+        <div class="container">
+            <div class="mb-4">
+                <a href="showroom.html" class="text-primary text-decoration-none fw-bold">
+                    <i class="fa-solid fa-arrow-left-long me-1"></i> Quay lại Showroom
+                </a>
+            </div>
+
+            <h2 class="text-primary mb-4"><i class="fa-solid fa-wallet me-2 text-accent"></i>Nạp tiền vào ví điện tử</h2>
+
+            <div class="row">
+                <!-- Left Column: Deposit Form -->
+                <div class="col-md-7 mb-4 mb-md-0">
+                    <div class="card border-0 shadow-sm p-4 rounded-md bg-white">
+                        <h5 class="text-primary mb-4">Thông tin chuyển khoản</h5>
+                        <form id="deposit-form">
+                            <!-- Bank Selection -->
+                            <div class="mb-3">
+                                <label for="bank-name" class="form-label fw-bold">Ngân hàng liên kết</label>
+                                <select id="bank-name" class="form-select" required>
+                                    <option value="Vietcombank">Vietcombank (VCB)</option>
+                                    <option value="Vietinbank">Vietinbank (CTG)</option>
+                                    <option value="Techcombank">Techcombank (TCB)</option>
+                                    <option value="BIDV">BIDV</option>
+                                    <option value="MB Bank">MB Bank (MBB)</option>
+                                    <option value="VPBank">VPBank</option>
+                                </select>
+                            </div>
+
+                            <!-- Account Number -->
+                            <div class="mb-3">
+                                <label for="account-number" class="form-label fw-bold">Số tài khoản nguồn</label>
+                                <input type="text" id="account-number" class="form-control" placeholder="Nhập số tài khoản ngân hàng của bạn" required>
+                            </div>
+
+                            <!-- Deposit Amount -->
+                            <div class="mb-3">
+                                <label for="amount" class="form-label fw-bold">Số tiền nạp (VNĐ)</label>
+                                <input type="number" id="amount" class="form-control" min="10000000" step="1000000" placeholder="Số tiền tối thiểu 10.000.000 ₫" required>
+                                <div class="form-text">Mỗi giao dịch nạp tối thiểu là 10.000.000 ₫.</div>
+                            </div>
+
+                            <!-- Quick Amount Selectors -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Số tiền chọn nhanh</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="setQuickAmount(50000000)">50 Triệu</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="setQuickAmount(100000000)">100 Triệu</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="setQuickAmount(200000000)">200 Triệu</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="setQuickAmount(500000000)">500 Triệu</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-100 py-2">Xác nhận nạp tiền</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column: Balance Status -->
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm p-4 rounded-md bg-white text-center">
+                        <h5 class="text-secondary mb-3">Số dư hiện tại</h5>
+                        <h2 class="text-primary fw-bold deposit-balance my-3" id="current-balance-display">0 ₫</h2>
+                        
+                        <hr class="my-4">
+
+                        <div class="text-start">
+                            <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-circle-info me-2 text-accent"></i>Hướng dẫn ví điện tử</h6>
+                            <ul class="text-grey ps-3" style="font-size: 0.9rem;">
+                                <li class="mb-2">Số dư trong ví này được sử dụng để thanh toán tiền đặt cọc giữ xe tại đại lý.</li>
+                                <li class="mb-2">Số tiền cọc tối thiểu cho mỗi chiếc xe ô tô là <strong>50.000.000 ₫</strong>.</li>
+                                <li class="mb-2">Giao dịch nạp tiền là hoàn toàn mô phỏng/ảo phục vụ học tập, không trừ tiền thật từ tài khoản của bạn.</li>
+                                <li>Sau khi nạp thành công, hãy quay lại trang <a href="booking.html" class="text-accent fw-bold text-decoration-none">Đơn đặt cọc</a> để tiến hành thanh toán cọc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>VỀ CHÚNG TÔI</h5>
+                    <p class="text-grey-light">CarShop - Đại lý phân phối ô tô nhập khẩu và lắp ráp chính hãng hàng đầu. Uy tín được khẳng định qua hàng ngàn khách hàng hài lòng trên cả nước.</p>
+                    <p class="text-grey-light"><i class="fa-solid fa-location-dot me-2 text-accent"></i> 123 Đường Láng, Đống Đa, Hà Nội</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>GIỜ MỞ CỬA</h5>
+                    <ul>
+                        <li>Thứ Hai - Thứ Sáu: 8:00 - 18:00</li>
+                        <li>Thứ Bảy - Chủ Nhật: 8:00 - 17:00</li>
+                        <li>Hotline hỗ trợ kỹ thuật: 1900 1234 (24/7)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>LIÊN HỆ & MẠNG XÃ HỘI</h5>
+                    <p class="text-grey-light"><i class="fa-solid fa-phone me-2 text-accent"></i> Hotline Bán Hàng: 0988 888 888</p>
+                    <p class="text-grey-light"><i class="fa-solid fa-envelope me-2 text-accent"></i> contact@carshop.com</p>
+                    <div class="mt-3">
+                        <a href="#" class="btn-primary me-2 rounded-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn-primary me-2 rounded-sm"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="btn-primary rounded-sm"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 border-secondary">
+            <div class="text-center text-grey-light mt-3">
+                <small>&copy; 2026 CarShop. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="src/js/firebase-config.js"></script>
+    <script src="src/js/local-db.js"></script>
+    <script src="src/js/check_session.js"></script>
+    <script src="src/js/guest.js"></script>
+    <script src="src/js/deposit.js"></script>
+</body>
+</html>

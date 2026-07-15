@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - CarShop Đại lý xe ô tô uy tín</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.1 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/guest.css">
+</head>
+<body>
+    <!-- Booking Form Overlay Modal (Ẩn mặc định) -->
+    <div id="booking-modal" class="booking-form-overlay">
+        <div class="booking-form-content">
+            <span class="close-btn" onclick="closeBookingModal()">&times;</span>
+            <h3 class="mb-4">Xác nhận đặt cọc xe</h3>
+            <div id="booking-modal-body">
+                <!-- Sẽ render động qua JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Header -->
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <img src="src/img/logo.png" alt="CarShop Logo" class="logo">
+            </a>
+            
+            <!-- Mobile Toggle -->
+            <i class="fa-solid fa-bars icon-dropdown" id="hamburger-menu"></i>
+            
+            <nav id="nav-menu" class="hidden">
+                <a href="index.html" class="active">Trang chủ</a>
+                <a href="showroom.html">Showroom</a>
+                <a href="booking.html">Đơn đặt cọc (🚗)</a>
+                
+                <!-- Profile Dropdown -->
+                <div class="dropdown d-inline-block" id="author-menu-drd">
+                    <!-- Sẽ render động qua JS (Đăng nhập / Tên User) -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="banner-group">
+        <!-- Animated floating particles -->
+        <div class="hero-particles">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+
+        <!-- Gradient overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Main Content -->
+        <div class="banner-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-bolt"></i> Ưu đãi lên đến 50 triệu đồng
+            </div>
+            <h1>Trải Nghiệm<br><span class="hero-highlight">Đẳng Cấp Vượt Trội</span></h1>
+            <p class="tagline">Khám phá bộ sưu tập xe sang trọng từ các thương hiệu hàng đầu thế giới.<br>Dịch vụ chuyên nghiệp — Giá trị bền vững.</p>
+            <div class="hero-cta-group">
+                <a href="showroom.html" class="hero-btn-primary">
+                    <i class="fa-solid fa-car me-2"></i>Khám Phá Showroom
+                </a>
+                <a href="booking.html" class="hero-btn-outline">
+                    <i class="fa-solid fa-calendar-check me-2"></i>Đặt Lịch Hẹn
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Stats -->
+        <div class="hero-stats">
+            <div class="hero-stat-item">
+                <span class="hero-stat-number">10+</span>
+                <span class="hero-stat-label">Thương Hiệu</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat-item">
+                <span class="hero-stat-number">1000+</span>
+                <span class="hero-stat-label">Xe Đã Bán</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat-item">
+                <span class="hero-stat-number">99%</span>
+                <span class="hero-stat-label">Hài Lòng</span>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">Cuộn xuống</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <!-- Video Giới Thiệu -->
+                    <div class="ratio ratio-16x9 shadow-md rounded-md overflow-hidden">
+                        <iframe src="https://www.youtube.com/embed/qkc7IlqlHRc" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <h2 class="text-primary mb-3">Về Chúng Tôi - CarShop</h2>
+                    <p class="text-grey mb-3">
+                        CarShop tự hào là một trong những đại lý phân phối ô tô hàng đầu Việt Nam. Với hơn 10 năm kinh nghiệm trong lĩnh vực nhập khẩu và phân phối xe, chúng tôi cam kết đem lại chất lượng dịch vụ và sản phẩm tốt nhất cho quý khách hàng.
+                    </p>
+                    <p class="text-grey mb-4">
+                        Chúng tôi phân phối đa dạng các dòng xe từ Sedan sang trọng, SUV thể thao mạnh mẽ đến các dòng xe điện tương lai thông minh. Đến với CarShop để nhận ngay những chính sách đặt cọc linh hoạt, tư vấn tận tâm và hỗ trợ giao xe nhanh chóng.
+                    </p>
+                    <div class="row">
+                        <div class="col-6 col-sm-4">
+                            <h3 class="text-accent fw-bold m-0">15+</h3>
+                            <small class="text-grey">Thương hiệu nổi tiếng</small>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <h3 class="text-accent fw-bold m-0">1000+</h3>
+                            <small class="text-grey">Khách hàng hài lòng</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-4">
+                <div>
+                    <h2 class="text-primary m-0">Xe Nổi Bật Tháng Này</h2>
+                    <p class="text-grey m-0">Những mẫu xe bán chạy nhất được lựa chọn bởi khách hàng</p>
+                </div>
+                <a href="showroom.html" class="text-primary text-decoration-none fw-bold">Xem tất cả xe <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="row car-list" id="featured-car-list">
+                <!-- Sẽ render động 3 xe qua JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>VỀ CHÚNG TÔI</h5>
+                    <p class="text-grey-light">CarShop - Đại lý phân phối ô tô nhập khẩu và lắp ráp chính hãng hàng đầu. Uy tín được khẳng định qua hàng ngàn khách hàng hài lòng trên cả nước.</p>
+                    <p class="text-grey-light"><i class="fa-solid fa-location-dot me-2 text-accent"></i> 123 Đường Láng, Đống Đa, Hà Nội</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>GIỜ MỞ CỬA</h5>
+                    <ul>
+                        <li>Thứ Hai - Thứ Sáu: 8:00 - 18:00</li>
+                        <li>Thứ Bảy - Chủ Nhật: 8:00 - 17:00</li>
+                        <li>Hotline hỗ trợ kỹ thuật: 1900 1234 (24/7)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>LIÊN HỆ & MẠNG XÃ HỘI</h5>
+                    <p class="text-grey-light"><i class="fa-solid fa-phone me-2 text-accent"></i> Hotline Bán Hàng: 0988 888 888</p>
+                    <p class="text-grey-light"><i class="fa-solid fa-envelope me-2 text-accent"></i> contact@carshop.com</p>
+                    <div class="mt-3">
+                        <a href="#" class="btn-primary me-2 rounded-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn-primary me-2 rounded-sm"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="btn-primary rounded-sm"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 border-secondary">
+            <div class="text-center text-grey-light mt-3">
+                <small>&copy; 2026 CarShop. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="src/js/firebase-config.js"></script>
+    <script src="src/js/local-db.js"></script>
+    <script src="src/js/check_session.js"></script>
+    <script src="src/js/guest.js"></script>
+    <script src="src/js/get-car.js"></script>
+    
+    <!-- Initialize Featured Cars -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('featured-car-list');
+            if (container && window.getCarList) {
+                window.getCarList(container, 3);
+            }
+        });
+    </script>
+</body>
+</html>
